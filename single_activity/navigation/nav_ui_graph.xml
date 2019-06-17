@@ -1,0 +1,43 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:id="@+id/nav_graph" app:startDestination="@id/callsFragment">
+
+    <fragment android:id="@+id/callsFragment" android:name="CallsFragment"
+              android:label="fragment_calls" tools:layout="@layout/fragment_calls"/>
+    
+    <!-- actions can include animations behavior in four different cases -->
+    <fragment android:id="@+id/contactsFragment" android:name="ContactsFragment"
+              android:label="fragment_contacts" tools:layout="@layout/fragment_contacts">                
+        <action android:id="@+id/contacts_to_addContact" app:destination="@id/addContactFragment"/>
+        <action android:id="@+id/contacts_to_contactDetails" app:destination="@id/contactDetailsFragment" 
+            app:popEnterAnim="@anim/pop_enter_anim" app:popExitAnim="@anim/pop_exit_anim" 
+            app:enterAnim="@anim/enter_anim" app:exitAnim="@anim/exit_anim"/>
+    </fragment>
+    
+    <fragment android:id="@+id/aboutFragment" android:name="AboutFragment"
+              android:label="fragment_about" tools:layout="@layout/fragment_about"/>
+    
+    <fragment android:id="@+id/addContactFragment" android:name="AddContactFragment"
+              android:label="fragment_add_contact" tools:layout="@layout/fragment_add_contact">      
+        <action android:id="@+id/addContact_to_contacts" app:destination="@id/contactsFragment" />
+    </fragment>
+    
+    <!-- actions can include argument with type and default values for primitives -->
+    <fragment android:id="@+id/contactDetailsFragment" android:name="ContactDetailsFragment"
+              android:label="fragment_contact_details" tools:layout="@layout/fragment_contact_details">              
+        <action android:id="@+id/contactDetails_to_editContact" app:destination="@id/editContactFragment"/>
+        <argument android:name="CONTACT" app:argType="Contact"/>
+    </fragment>
+    
+    <!-- notice that sometimes there is need to manage stack by pop previous elements -->
+    <fragment android:id="@+id/editContactFragment" android:name="EditContactFragment"
+              android:label="fragment_edit_contact" tools:layout="@layout/fragment_edit_contact">              
+        <action android:id="@+id/editContact_to_contacts" app:destination="@id/contactsFragment" 
+            app:popUpTo="@+id/contactsFragment" app:popUpToInclusive="true"/>
+        <argument android:name="CONTACT" app:argType="Contact"/>
+    </fragment>
+	
+    <!-- here could be some definitions of navigation or action elements -->
+
+</navigation>

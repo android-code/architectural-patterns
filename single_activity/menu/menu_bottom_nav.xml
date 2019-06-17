@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- id of item is destination id from navigation graph -->
+    <item android:id="@+id/callsFragment" android:title="Calls"/>
+    <item android:id="@+id/contactsFragment" android:title="Contacts"/>
+</menu>
